@@ -123,17 +123,18 @@
             margin-top: 40px;
             display: flex;
             justify-content: center;
-            gap: 25px; /* Increased gap */
+            gap: 25px;
         }
 
         .social-icons a {
-            font-size: 32px; /* Made icons bigger */
+            font-size: 32px;
             transition: all 0.3s ease;
             text-decoration: none;
+            cursor: pointer;
         }
 
         .social-icons a:hover {
-            transform: scale(1.15); /* Nice pop effect */
+            transform: scale(1.15);
         }
 
         /* Brand Colors */
@@ -142,6 +143,32 @@
         .icon-instagram { color: #E1306C; }
         .icon-github { color: #ffffff; }
         .icon-email { color: #ea4335; }
+        
+        .tooltip {
+            position: relative;
+        }
+        
+        .tooltip::after {
+            content: "Copied!";
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #00ffcc;
+            color: #000;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.2s;
+        }
+        
+        .tooltip.show::after {
+            opacity: 1;
+            visibility: visible;
+        }
 
         footer {
             margin-top: auto;
@@ -155,7 +182,6 @@
 <body>
 
     <div class="container">
-        <!-- Replaced with the local uploaded photo -->
         <img src="profile.jpg" alt="F. Utku Gercik" class="profile-pic">
         
         <h1>F. Utku Gercik</h1>
@@ -180,7 +206,7 @@
             <a href="https://tr.linkedin.com/in/furkan-utku-ger%C3%A7ik-98b5ba128" target="_blank" class="icon-linkedin" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
             <a href="https://www.instagram.com/fugworks/" target="_blank" class="icon-instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
             <a href="https://github.com/rhinofug" target="_blank" class="icon-github" title="GitHub"><i class="fa-brands fa-github"></i></a>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=utkugercik@gmail.com" class="icon-email" title="Email Me"><i class="fa-solid fa-envelope"></i></a>
+            <a onclick="copyEmail(event)" class="icon-email tooltip" title="Copy Email"><i id="email-icon" class="fa-solid fa-envelope"></i></a>
         </div>
     </div>
 
@@ -188,5 +214,24 @@
         &copy; 2026 F. Utku Gercik
     </footer>
 
+    <script>
+        function copyEmail(e) {
+            e.preventDefault();
+            navigator.clipboard.writeText("utkugercik@gmail.com").then(() => {
+                const btn = e.currentTarget;
+                const icon = document.getElementById("email-icon");
+                
+                // Show 'Copied!' tooltip
+                btn.classList.add("show");
+                // Change icon to checkmark
+                icon.className = "fa-solid fa-check";
+                
+                setTimeout(() => {
+                    btn.classList.remove("show");
+                    icon.className = "fa-solid fa-envelope";
+                }, 2000);
+            });
+        }
+    </script>
 </body>
 </html>
