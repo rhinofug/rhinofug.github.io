@@ -143,31 +143,33 @@
         .icon-instagram { color: #E1306C; }
         .icon-github { color: #ffffff; }
         .icon-email { color: #ea4335; }
-        
-        .tooltip {
-            position: relative;
-        }
-        
-        .tooltip::after {
-            content: "Copied!";
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #00ffcc;
-            color: #000;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: bold;
-            opacity: 0;
+        .icon-email.success { color: #00ffcc !important; }
+
+        /* Toast Notification */
+        #toast {
             visibility: hidden;
-            transition: 0.2s;
+            min-width: 250px;
+            background-color: var(--accent);
+            color: #000;
+            text-align: center;
+            border-radius: 8px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s, bottom 0.3s;
         }
-        
-        .tooltip.show::after {
-            opacity: 1;
+
+        #toast.show {
             visibility: visible;
+            opacity: 1;
+            bottom: 50px;
         }
 
         footer {
@@ -206,30 +208,38 @@
             <a href="https://tr.linkedin.com/in/furkan-utku-ger%C3%A7ik-98b5ba128" target="_blank" class="icon-linkedin" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
             <a href="https://www.instagram.com/fugworks/" target="_blank" class="icon-instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
             <a href="https://github.com/rhinofug" target="_blank" class="icon-github" title="GitHub"><i class="fa-brands fa-github"></i></a>
-            <a onclick="copyEmail(event)" class="icon-email tooltip" title="Copy Email"><i id="email-icon" class="fa-solid fa-envelope"></i></a>
+            <a onclick="copyEmail()" class="icon-email" id="email-btn" title="Copy Email"><i id="email-icon" class="fa-solid fa-envelope"></i></a>
         </div>
     </div>
+
+    <!-- Toast Element -->
+    <div id="toast"><i class="fa-solid fa-check"></i> Email Copied to Clipboard!</div>
 
     <footer>
         &copy; 2026 Furkan Utku Gerçik
     </footer>
 
     <script>
-        function copyEmail(e) {
-            e.preventDefault();
+        function copyEmail() {
             navigator.clipboard.writeText("utkugercik@gmail.com").then(() => {
-                const btn = e.currentTarget;
+                const toast = document.getElementById("toast");
                 const icon = document.getElementById("email-icon");
+                const btn = document.getElementById("email-btn");
                 
-                // Show 'Copied!' tooltip
-                btn.classList.add("show");
-                // Change icon to checkmark
+                // Show toast
+                toast.className = "show";
+                
+                // Change button style to success
                 icon.className = "fa-solid fa-check";
+                btn.classList.add("success");
                 
                 setTimeout(() => {
-                    btn.classList.remove("show");
+                    toast.className = toast.className.replace("show", "");
                     icon.className = "fa-solid fa-envelope";
-                }, 2000);
+                    btn.classList.remove("success");
+                }, 2500);
+            }).catch(err => {
+                console.error("Failed to copy text: ", err);
             });
         }
     </script>
