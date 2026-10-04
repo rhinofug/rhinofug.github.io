@@ -272,10 +272,14 @@
         <div class="subscribe-section">
             <h3 class="subscribe-title">Coming Soon: The Next Big Thing</h3>
             <p class="subscribe-desc">Join the waitlist to get early access and development updates.</p>
-            <!-- REPLACE 'YOUR_FORM_ID_HERE' WITH YOUR FORMSPREE ID -->
-            <form action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST" class="subscribe-form">
-                <input type="email" name="email" placeholder="Enter your email address..." required>
-                <button type="submit" title="Notify Me"><i class="fa-solid fa-paper-plane"></i></button>
+            
+            <div data-fs-success style="display:none; color: var(--accent); font-weight: bold; margin-top: 10px;">
+                🎉 Thank you! You're on the waitlist.
+            </div>
+            
+            <form id="waitlist-form" class="subscribe-form">
+                <input type="email" name="email" data-fs-field placeholder="Enter your email address..." required>
+                <button type="submit" data-fs-submit-btn title="Notify Me"><i class="fa-solid fa-paper-plane"></i></button>
             </form>
         </div>
 
@@ -321,8 +325,14 @@
             });
         }
     </script>
+    <script>
+        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+        formspree('initForm', { formElement: '#waitlist-form', formId: 'mjygbjpn' });
+    </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>
+
 
 
 
