@@ -271,15 +271,11 @@
 
         <div class="subscribe-section">
             <h3 class="subscribe-title">Coming Soon: The Next Big Thing</h3>
-            <p class="subscribe-desc">Join the waitlist to get early access and development updates.</p>
-            
-            <div data-fs-success style="display:none; color: var(--accent); font-weight: bold; margin-top: 10px;">
-                🎉 Thank you! You're on the waitlist.
-            </div>
+            <p class="subscribe-desc">Something HUGE is coming in couple months, Autumn 2026 ; drop your e-mail for early access.</p>
             
             <form id="waitlist-form" class="subscribe-form">
-                <input type="email" name="email" data-fs-field placeholder="Enter your email address..." required>
-                <button type="submit" data-fs-submit-btn title="Notify Me"><i class="fa-solid fa-paper-plane"></i></button>
+                <input type="email" name="email" placeholder="Enter your email address..." required>
+                <button type="submit" title="Notify Me"><i class="fa-solid fa-paper-plane"></i></button>
             </form>
         </div>
 
@@ -326,12 +322,42 @@
         }
     </script>
     <script>
-        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-        formspree('initForm', { formElement: '#waitlist-form', formId: 'mjygbjpn' });
+        document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var form = e.target;
+            var btn = form.querySelector('button');
+            var icon = btn.querySelector('i');
+            
+            // Loading state
+            icon.className = 'fa-solid fa-spinner fa-spin';
+            btn.style.opacity = '0.7';
+            btn.disabled = true;
+
+            var data = new FormData(form);
+            fetch('https://formspree.io/f/mjygbjpn', {
+                method: 'POST',
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    form.innerHTML = '<div style="color: var(--accent); font-weight: bold; padding: 10px 0; width: 100%; text-align: center; animation: fadeIn 0.5s;">🎉 Thank you! You\\'re on the waitlist.</div>';
+                } else {
+                    icon.className = 'fa-solid fa-circle-exclamation';
+                    btn.style.backgroundColor = '#ff4444';
+                    btn.disabled = false;
+                }
+            }).catch(error => {
+                icon.className = 'fa-solid fa-circle-exclamation';
+                btn.style.backgroundColor = '#ff4444';
+                btn.disabled = false;
+            });
+        });
     </script>
-    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>
+
 
 
 
