@@ -39,8 +39,8 @@
         }
 
         .profile-pic {
-            width: 120px;
-            height: 120px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 20px;
@@ -50,7 +50,7 @@
         }
 
         h1 {
-            font-size: 24px;
+            font-size: 26px;
             margin-bottom: 5px;
             font-weight: 600;
             letter-spacing: 1px;
@@ -123,18 +123,25 @@
             margin-top: 40px;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 25px; /* Increased gap */
         }
 
         .social-icons a {
-            color: var(--text-color);
-            font-size: 24px;
-            transition: color 0.3s ease;
+            font-size: 32px; /* Made icons bigger */
+            transition: all 0.3s ease;
+            text-decoration: none;
         }
 
         .social-icons a:hover {
-            color: var(--accent);
+            transform: scale(1.15); /* Nice pop effect */
         }
+
+        /* Brand Colors */
+        .icon-imdb { color: #f5c518; }
+        .icon-linkedin { color: #0a66c2; }
+        .icon-instagram { color: #E1306C; }
+        .icon-github { color: #ffffff; }
+        .icon-email { color: #ea4335; }
 
         footer {
             margin-top: auto;
@@ -148,7 +155,8 @@
 <body>
 
     <div class="container">
-        <img src="https://avatars.githubusercontent.com/u/rhinofug?v=4" alt="F. Utku Gercik" class="profile-pic" onerror="this.src='https://ui-avatars.com/api/?name=Utku+Gercik&background=random&color=fff&size=150'">
+        <!-- Replaced with the local uploaded photo -->
+        <img src="profile.jpg" alt="F. Utku Gercik" class="profile-pic">
         
         <h1>F. Utku Gercik</h1>
         <p class="bio">"From Diodes to Human Experience: An Audio Enthusiast."</p>
@@ -168,11 +176,11 @@
         </div>
 
         <div class="social-icons">
-            <a href="https://www.imdb.com/name/nm8925449/" target="_blank" title="IMDb"><i class="fa-brands fa-imdb" style="color: #f5c518;"></i></a>
-            <a href="https://tr.linkedin.com/in/furkan-utku-ger%C3%A7ik-98b5ba128" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://www.instagram.com/fugworks/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://github.com/rhinofug" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
-            <a href="mailto:utkugercik@gmail.com" title="Email Me"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://www.imdb.com/name/nm8925449/" target="_blank" class="icon-imdb" title="IMDb"><i class="fa-brands fa-imdb"></i></a>
+            <a href="https://tr.linkedin.com/in/furkan-utku-ger%C3%A7ik-98b5ba128" target="_blank" class="icon-linkedin" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/fugworks/" target="_blank" class="icon-instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://github.com/rhinofug" target="_blank" class="icon-github" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="mailto:utkugercik@gmail.com" class="icon-email" title="Email Me"><i class="fa-solid fa-envelope"></i></a>
         </div>
     </div>
 
