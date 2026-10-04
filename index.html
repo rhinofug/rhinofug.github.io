@@ -342,7 +342,7 @@
                 }
             }).then(response => {
                 if (response.ok) {
-                    form.innerHTML = `<div style="color: var(--accent); font-weight: bold; padding: 10px 0; width: 100%; text-align: center; animation: fadeIn 0.5s;">🎉 Thank you! You\\'re on the waitlist.</div>;
+                    form.innerHTML = <div style='color: var(--accent); font-weight: bold; padding: 10px 0; width: 100%; text-align: center;'>Thank you! You are on the waitlist.</div>;
                 } else {
                     icon.className = 'fa-solid fa-circle-exclamation';
                     btn.style.backgroundColor = '#ff4444';
