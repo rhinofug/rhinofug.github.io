@@ -120,6 +120,70 @@
             background-color: rgba(255, 221, 0, 0.1);
         }
 
+                .subscribe-section {
+            margin-top: 25px;
+            padding: 25px 20px;
+            background-color: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            border: 1px solid #222;
+            width: 100%;
+            transition: border-color 0.3s ease;
+        }
+
+        .subscribe-section:hover {
+            border-color: #333;
+        }
+
+        .subscribe-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #eeeeee;
+            margin-bottom: 5px;
+        }
+
+        .subscribe-desc {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .subscribe-form input {
+            flex: 1;
+            padding: 14px 15px;
+            background-color: #0a0a0a;
+            border: 1px solid #333;
+            color: #fff;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .subscribe-form input:focus {
+            border-color: var(--accent);
+        }
+
+        .subscribe-form button {
+            background-color: var(--accent);
+            color: #000;
+            border: none;
+            padding: 0 22px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .subscribe-form button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 12px rgba(0, 255, 204, 0.4);
+        }
+
         .social-icons {
             margin-top: 40px;
             display: flex;
@@ -199,10 +263,20 @@
             </a>
 
             <!-- Buy Me A Coffee -->
-            <a href="https://buymeacoffee.com/rhinofug" target="_blank" class="link-btn btn-coffee">
+                        <a href="https://buymeacoffee.com/rhinofug" target="_blank" class="link-btn btn-coffee">
                 <i class="fa-solid fa-mug-hot"></i>
                 Buy Me A Coffee
             </a>
+        </div>
+
+        <div class="subscribe-section">
+            <h3 class="subscribe-title">Coming Soon: The Next Big Thing</h3>
+            <p class="subscribe-desc">Join the waitlist to get early access and development updates.</p>
+            <!-- REPLACE 'YOUR_FORM_ID_HERE' WITH YOUR FORMSPREE ID -->
+            <form action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST" class="subscribe-form">
+                <input type="email" name="email" placeholder="Enter your email address..." required>
+                <button type="submit" title="Notify Me"><i class="fa-solid fa-paper-plane"></i></button>
+            </form>
         </div>
 
         <div class="social-icons">
@@ -249,6 +323,7 @@
     </script>
 </body>
 </html>
+
 
 
 
