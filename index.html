@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furkan Utku Gerçik // @Rhinofug</title>
+    <link rel="icon" href="profile.jpg" type="image/jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0c;
+            --surface-color: #121216;
+            --surface-hover: #19191f;
+            --border-color: #24242c;
+            --border-hover: #3a3a46;
+            --text-primary: #ececf0;
+            --text-secondary: #9494a0;
+            --text-muted: #5e5e6a;
+            --accent-crimson: #e6192e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 56px 20px 36px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 540px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 128px;
+            height: 128px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-hover);
+            padding: 4px;
+            background-color: var(--surface-color);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .handle-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--text-muted);
+            letter-spacing: 0.8px;
+            margin-bottom: 14px;
+        }
+
+        p.bio {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .location-line {
+            display: inline-block;
+            margin-top: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--surface-color);
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 16px 20px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0.1px;
+            transition: all 0.2s ease;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .link-btn i {
+            position: absolute;
+            left: 20px;
+            font-size: 17px;
+            color: var(--text-secondary);
+            transition: color 0.2s ease;
+        }
+
+        .link-btn:hover {
+            background-color: var(--surface-hover);
+            transform: translateY(-1px);
+            border-color: var(--border-hover);
+        }
+
+        .link-btn:hover i {
+            color: var(--text-primary);
+        }
+
+        .link-sub {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-left: 8px;
+            font-weight: 400;
+        }
+
+        /* Primary Xulab Accent */
+        .btn-xulab {
+            border-color: rgba(230, 25, 46, 0.45);
+            background: linear-gradient(180deg, rgba(230, 25, 46, 0.09) 0%, rgba(230, 25, 46, 0.03) 100%);
+        }
+
+        .btn-xulab i {
+            color: var(--accent-crimson);
+        }
+
+        .btn-xulab:hover {
+            border-color: var(--accent-crimson);
+            background: linear-gradient(180deg, rgba(230, 25, 46, 0.15) 0%, rgba(230, 25, 46, 0.06) 100%);
+            box-shadow: 0 6px 20px rgba(230, 25, 46, 0.14);
+        }
+
+        .btn-xulab:hover i {
+            color: var(--accent-crimson);
+        }
+
+        /* Early Access Waitlist Box */
+        .subscribe-section {
+            margin-top: 24px;
+            padding: 22px 20px;
+            background-color: var(--surface-color);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            width: 100%;
+            text-align: left;
+        }
+
+        .subscribe-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+
+        .subscribe-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: 0.1px;
+        }
+
+        .subscribe-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border: 1px solid var(--border-color);
+            padding: 2px 7px;
+            border-radius: 4px;
+        }
+
+        .subscribe-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: 8px;
+        }
+
+        .subscribe-form input {
+            flex: 1;
+            padding: 12px 14px;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .subscribe-form input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .subscribe-form input:focus {
+            border-color: var(--border-hover);
+        }
+
+        .subscribe-form button {
+            background-color: var(--text-primary);
+            color: var(--bg-color);
+            border: none;
+            padding: 0 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.2s ease;
+        }
+
+        .subscribe-form button:hover {
+            background-color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        /* Social Icons */
+        .social-icons {
+            margin-top: 36px;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .social-icons a {
+            font-size: 22px;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .social-icons a:hover {
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .icon-email.success {
+            color: var(--text-primary) !important;
+        }
+
+        /* Subtle Footnote & Support Link */
+        footer {
+            margin-top: auto;
+            padding-top: 36px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--text-muted);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .support-footnote {
+            color: var(--text-muted);
+            text-decoration: none;
+            opacity: 0.65;
+            transition: opacity 0.2s ease, color 0.2s ease;
+            border-bottom: 1px dotted rgba(148, 148, 160, 0.25);
+            padding-bottom: 2px;
+        }
+
+        .support-footnote:hover {
+            opacity: 1;
+            color: var(--text-secondary);
+            border-bottom-color: var(--text-secondary);
+        }
+
+        /* Toast Notification */
+        #toast {
+            visibility: hidden;
+            min-width: 240px;
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-hover);
+            color: var(--text-primary);
+            text-align: center;
+            border-radius: 6px;
+            padding: 12px 16px;
+            position: fixed;
+            z-index: 10;
+            left: 50%;
+            bottom: 28px;
+            transform: translateX(-50%);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            transition: opacity 0.25s, bottom 0.25s;
+        }
+
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+            bottom: 42px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="profile.jpg" alt="Furkan Utku Gerçik" class="profile-pic">
+        
+        <h1>Furkan Utku Gerçik</h1>
+        <div class="handle-tag">@RHINOFUG // AUDIO &amp; POST-PRODUCTION ARCHITECT</div>
+        <p class="bio">
+            "From Diodes to Human Experience: An Audio Enthusiast."<br>
+            <span class="location-line"><i class="fa-solid fa-location-dot" style="margin-right: 5px;"></i>Istanbul, TR</span>
+        </p>
+
+        <div class="links-container">
+            <!-- Xulab Collective -->
+            <a href="https://xulab-collective.github.io" target="_blank" class="link-btn btn-xulab">
+                <i class="fa-solid fa-terminal"></i>
+                Join Xulab-Collective
+            </a>
+
+            <!-- VCut2DAW -->
+            <a href="https://github.com/xulab-collective/VCut2DAW" target="_blank" class="link-btn">
+                <i class="fa-solid fa-scissors"></i>
+                Download VCut2DAW <span class="link-sub">// Open-Source</span>
+            </a>
+
+            <!-- Chaosmos Sounds Istanbul -->
+            <a href="https://www.asoundeffect.com/sound-library/chaosmos-sounds-istanbul/" target="_blank" class="link-btn">
+                <i class="fa-solid fa-wave-square"></i>
+                Chaosmos: Sounds from Istanbul <span class="link-sub">// Sound Library</span>
+            </a>
+        </div>
+
+        <div class="subscribe-section">
+            <div class="subscribe-header">
+                <h3 class="subscribe-title">New Releases &amp; Early Access</h3>
+                <span class="subscribe-badge">Autumn 2026</span>
+            </div>
+            <p class="subscribe-desc">Something major is in the forge. Leave your email for early access.</p>
+            
+            <form id="waitlist-form" class="subscribe-form">
+                <input type="email" name="email" placeholder="Enter your email address..." required>
+                <button type="submit" title="Request Access">JOIN</button>
+            </form>
+        </div>
+
+        <div class="social-icons">
+            <a href="https://www.imdb.com/name/nm8925449/" target="_blank" class="icon-imdb" title="IMDb"><i class="fa-brands fa-imdb"></i></a>
+            <a href="https://tr.linkedin.com/in/furkan-utku-ger%C3%A7ik-98b5ba128" target="_blank" class="icon-linkedin" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://x.com/Rhinofug" target="_blank" class="icon-twitter" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.instagram.com/fugworks/" target="_blank" class="icon-instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://github.com/rhinofug" target="_blank" class="icon-github" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a onclick="copyEmail()" class="icon-email" id="email-btn" title="Copy Email"><i id="email-icon" class="fa-solid fa-envelope"></i></a>
+        </div>
+    </div>
+
+    <!-- Toast Element -->
+    <div id="toast"><i class="fa-solid fa-check" style="margin-right: 6px;"></i>Email copied to clipboard</div>
+
+    <footer>
+        <a href="https://buymeacoffee.com/rhinofug" target="_blank" class="support-footnote">
+            Support Independent Open-Source R&amp;D
+        </a>
+        <div style="opacity: 0.45;">utkugercik@gmail.com</div>
+    </footer>
+
+    <script>
+        function copyEmail() {
+            navigator.clipboard.writeText("utkugercik@gmail.com").then(() => {
+                const toast = document.getElementById("toast");
+                const icon = document.getElementById("email-icon");
+                const btn = document.getElementById("email-btn");
+                
+                toast.className = "show";
+                icon.className = "fa-solid fa-check";
+                btn.classList.add("success");
+                
+                setTimeout(() => {
+                    toast.className = toast.className.replace("show", "");
+                    icon.className = "fa-solid fa-envelope";
+                    btn.classList.remove("success");
+                }, 2500);
+            }).catch(err => {
+                console.error("Failed to copy text: ", err);
+            });
+        }
+
+        document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var form = e.target;
+            var btn = form.querySelector('button');
+            
+            btn.textContent = "...";
+            btn.style.opacity = '0.7';
+            btn.disabled = true;
+
+            var data = new FormData(form);
+            fetch('https://formspree.io/f/mjygbjpn', {
+                method: 'POST',
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    form.innerHTML = "<div style=\"font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-primary); padding: 8px 0; width: 100%;\">Thank you. You are on the early access list.</div>";
+                } else {
+                    btn.textContent = "RETRY";
+                    btn.disabled = false;
+                }
+            }).catch(error => {
+                btn.textContent = "RETRY";
+                btn.disabled = false;
+            });
+        });
+    </script>
+</body>
+</html>
